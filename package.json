@@ -8,7 +8,13 @@
   },
   "repository": "https://github.com/cosminstn/schematique-vuetify",
   "bugs": "https://github.com/cosminstn/schematique-vuetify/issues",
-  "keywords": ["vue", "vuetify", "json", "forms", "vuetify"],
+  "keywords": [
+    "vue",
+    "vuetify",
+    "json",
+    "forms",
+    "vuetify"
+  ],
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -24,13 +30,17 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-airbnb": "^5.3.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
   "main": "./dist/schematique-vuetify.common.js",
-  "files": ["dist/*"],
+  "files": [
+    "dist/*"
+  ],
   "eslintConfig": {
     "root": true,
     "env": {
@@ -38,6 +48,7 @@
     },
     "extends": [
       "plugin:vue/essential",
+      "@vue/airbnb",
       "eslint:recommended"
     ],
     "parserOptions": {
