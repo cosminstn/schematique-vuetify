@@ -27,7 +27,7 @@
 
       <v-col cols="12">
         <SchematiqueWidget :schema="widgetSchemaExamples.text1" />
-        <SchematiqueWidget :schema="widgetSchemaExamples.btn1" />
+        <SchematiqueWidget :schema="widgetSchemaExamples.date1" />
       </v-col>
     </v-row>
   </v-container>
@@ -96,8 +96,8 @@ export default {
       text1: {
         type: 'text', label: 'First Name',
       },
-      btn1: {
-        $type: 'v-btn',
+      date1: {
+        type: 'date', label: 'Birth Date',
       },
     },
   }),
