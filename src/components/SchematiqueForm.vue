@@ -1,6 +1,11 @@
 <template>
   <v-container>
-    <schematique-widget :schema="{ type: 'text', label: 'Form component' }" />
+    <schematique-widget
+      v-for="(schema, field) in schema"
+      v-bind:key="field"
+      v-model="data[field]"
+      :schema="schema"
+    />
   </v-container>
 </template>
 
@@ -13,6 +18,10 @@ export default {
     schema: {
       type: Object,
     },
+    value: {
+      type: Object,
+      default: null,
+    },
   },
   components: {
     SchematiqueWidget,
@@ -20,8 +29,13 @@ export default {
   created() {},
   data() {
     return {
-      data: null,
+      data: this.value || {},
     };
+  },
+  watch: {
+    data(val) {
+      this.$emit('input', val);
+    },
   },
 };
 </script>

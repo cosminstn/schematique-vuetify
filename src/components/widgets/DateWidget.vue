@@ -1,34 +1,38 @@
 <template>
-  <v-menu
-    ref="menu"
-    v-model="menu"
-    :disabled="readonly"
-    :close-on-content-click="false"
-    transition="scale-transition"
-    offset-y
-    max-width="290px"
-    min-width="290px"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <v-text-field
-        v-model="inputDateText"
-        :rules="rules"
-        :readonly="readonly"
-        :label="label"
-        persistent-hint
-        prepend-icon="event"
-        v-bind="attrs"
-        v-on="on"
-      ></v-text-field>
-    </template>
-    <v-date-picker
-      v-model="data"
-      no-title
-      @input="menu = false"
-    ></v-date-picker>
-  </v-menu>
+  <!-- The v-menu needs to be wrapped in a component with the
+  data-app attribute or it won't show in certain cases -->
+  <div data-app>
+    <v-menu
+      ref="menu"
+      v-model="menu"
+      :disabled="readonly"
+      :close-on-content-click="false"
+      transition="scale-transition"
+      offset-y
+      max-width="290px"
+      min-width="290px"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-text-field
+          v-model="inputDateText"
+          :rules="rules"
+          :readonly="readonly"
+          :label="label"
+          persistent-hint
+          prepend-icon="event"
+          v-bind="attrs"
+          v-on="on"
+        ></v-text-field>
+      </template>
+      <v-date-picker
+        v-model="data"
+        no-title
+        @input="menu = false"
+      ></v-date-picker>
+    </v-menu>
+  </div>
 </template>
-k
+
 <script>
 import { DateTime } from 'luxon';
 
@@ -87,7 +91,9 @@ export default {
         this.data = val;
       } catch (ex) {
         // TODO: display error in widget somehow
-        console.error(`Could not parse ${val} to date using format ${this.dateFormat}`);
+        console.error(
+          `Could not parse ${val} to date using format ${this.dateFormat}`,
+        );
         this.data = null;
       }
     },

@@ -17,11 +17,20 @@ export default {
     schema: {
       type: Object,
     },
+    value: {
+      type: [String, Number, Boolean, Array, Object],
+      default: null,
+    },
   },
   data() {
     return {
       data: null,
     };
+  },
+  watch: {
+    data(val) {
+      this.$emit('input', val);
+    },
   },
 };
 </script>
